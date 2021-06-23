@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-
  devise_for :admins
+
+ namespace :adimin do
  get '/' => 'homes#top'
  resources :items, except: [:destroy]
-  end
+end
 
 end
