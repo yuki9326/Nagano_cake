@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+    <img src="/assets/top.jpg" class="img-fluid" alt="">
+    </div>
+  </div>
+
+  <div class="row">
+    <h4>新着商品</h4>
+  </div>
+
+  <div class="row">
+    <% @homes.items.each do |home_item| %>
+      <% home_item.image_id %>
+      <% home_item.name %>
+      <% home_item.price %>
+  </div>
+</div>

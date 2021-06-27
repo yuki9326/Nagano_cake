@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+  devise_for :customers
  devise_for :admins
 
  namespace :admin do
@@ -8,4 +10,7 @@ Rails.application.routes.draw do
  resources :genres, except: [:destroy, :new, :show]
 end
 
+scope module: :public do
+    root to: 'homes#top'
+end
 end
