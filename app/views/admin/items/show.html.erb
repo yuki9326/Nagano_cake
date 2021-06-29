@@ -4,35 +4,54 @@
       <h4>商品詳細</h4>
     </div>
   </div>
+  <br>
+  <br>
 
   <div class="row">
-    <%= attachment_image_tag @item, :image_id, :fill, 40, 40, size: '40x40' %>
-    <% @items.each do |item| %>
-    <div class="form-group row">
-      <label for ="inputName" class="col-sm-2 col-form-label">商品名</label>
-      <% item.name %>
+    <div class="col">
+    <%= attachment_image_tag @item, :image, size: '500x300' %>
     </div>
 
-    <div class="form-group row">
-      <label for ="inputIntroduction" class="col-sm-2 col-form-label">商品説明</label>
-      <% item.introduction %>
-    </div>
+    <div class="col">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
 
-    <div class="form-group row">
-      <label for ="inputGenre" class="col-sm-2 col-form-label">ジャンル</label>
-      <% item.genre_id %>
+      <tbody>
+        <tr>
+          <th scope="row">商品名</th>
+          <td><%= @item.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">商品説明</th>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <th scope="row">ジャンル</th>
+          <td><%= @item.genre.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">税込価格<br>(税抜価格)</th>
+          <td><%= (@item.price * 1.1).floor.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円</td>
+        </tr>
+        <tr>
+          <th scope="row">販売ステータス</th>
+          <td><% if @item.is_active = true then %>
+          販売中, 
+          <% else %>
+          販売停止中
+          <% end %></td>
+        </tr>
+      </tbody>
+    </table>
     </div>
-
-    <div class="form-group row">
-      <label for ="inputPrice" class="col-sm-2 col-form-label">税込価格<br>（税抜価格)</label>
-      <p>(<% item.price %>)円</p>
-    </div>
-
-    <div class="form-group row">
-      <label for="inputIs_active" class="col-sm-2 col-form-label">販売ステータス</label>
-      <% item.is_active %>
-    </div>
-    <% end %>
   </div>
-
+  <div class="row justify-content-around">
+    <div class="col-4"></div>
+    <div class="col-4"><%= link_to '編集する', edit_admin_item_path(@item.id), class:"btn btn-success btn-lg" %></div>
+  </div>
 </div>
