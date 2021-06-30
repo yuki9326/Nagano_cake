@@ -15,6 +15,7 @@ devise_for :customers, controllers: {
  get '/' => 'homes#top'
  resources :items, except: [:destroy]
  resources :genres, except: [:destroy, :new, :show]
+ resources :customers, only: [:index, :show, :edit, :update]
 end
 
 scope module: :public do
