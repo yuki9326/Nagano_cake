@@ -5,13 +5,16 @@
 
   <div class="row">
     <% @items.each do |item| %>
-    <div class="col-md-3">
-      <div class="card">
-        <%= image_tag item.image_id, class:'card-img-top' %>
-        <%= item.name %>
-        <%= item.price %>
-      </div>
-    </div>
+        <div class="card">
+          <div class="card-block">
+            <div class="PostImage">
+              <%= item.image %>
+            </div>
+           <div class="PostContent">
+                 <p><%= item.name %></p>
+                 <p><%= item.price %></p>
+            </div>
+          </div>
+        </div>
     <% end %>
   </div>
-</div>
