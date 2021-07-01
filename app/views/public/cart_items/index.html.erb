@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row ml-auto">
+    <div class="bg-light">
+      <h4>ショッピングカート</h4>
+    </div>
+    <% link_to "カートを空にする", cart_items_clear_path, method: :delete, class:"btn btn-danger" %>
+  </div>
+
+  <div class="row">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+        <%= form_with model: @cart_item, url:
+        <tr>
+          <td><%= cart_item.items.image %><%= cart_item.items.name %></td>
+          <td><%= (cart_item.items.price * 1.1).floor.to_s(:delimited) %></td>
+          <td><%= cart_item.amount %><</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

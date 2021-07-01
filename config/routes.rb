@@ -22,5 +22,7 @@ scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :items, only:[:show, :index]
+    resources :cart_items, only:[:index, :update, :destroy, :create]
+    delete 'cart_items/clear' => 'cart_items#clear'
 end
 end
