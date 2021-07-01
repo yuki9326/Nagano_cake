@@ -21,10 +21,13 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
-              <li>マイページ</li>
-              <li>商品一覧</li>
+              <li><%= link_to 'マイページ', customer_path(current_customer.id), class:"nav-link text-dark btn btn-outline-dark" %></li>
+              <div class="col"></div>
+              <li><%= link_to '商品一覧', items_path, class:"nav-link text-dark btn btn-outline-dark" %></li>
+              <div class="col"></div>
               <li>カート</li>
-              <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+              <div class="col"></div>
+              <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"nav-link text-dark btn btn-outline-dark" %></li>
               <% else %>
               <li><%= link_to 'About', about_path, class:"nav-link text-dark btn btn-outline-dark" %></li>
               <div class="col"></div>
