@@ -27,5 +27,8 @@ scope module: :public do
     resources :orders, only: [:new, :create, :index, :show]
     get 'orders/confirm' => 'orders#confirm'
     get 'orders/thanks' => 'orders#thanks'
+    resources :customers, only:[:show, :edit, :update]
+    get 'customers/confirm' => 'customers#confirm'
+    patch 'customers/unsubscribe' => 'customers#unsubscribe'
 end
 end
