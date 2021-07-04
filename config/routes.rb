@@ -22,13 +22,15 @@ scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :items, only: [:show, :index]
-    resources :cart_items, only: [:index, :update, :destroy, :create]
     delete 'cart_items/clear' => 'cart_items#clear'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders, only: [:new, :create, :index, :show]
     get 'orders/confirm' => 'orders#confirm'
     get 'orders/thanks' => 'orders#thanks'
-    resources :customers, only:[:show, :edit, :update]
-    get 'customers/confirm' => 'customers#confirm'
     patch 'customers/unsubscribe' => 'customers#unsubscribe'
+    get 'customers/confirm' => 'customers#confirm'
+    resources :customers, only:[:show, :edit, :update]
+    resources :addresses, except:[:new, :show]
+
 end
 end

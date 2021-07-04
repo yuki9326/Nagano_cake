@@ -4,6 +4,6 @@ class Order < ApplicationRecord
   has_many:order_details
   has_many:items,through: :order_details
 
-  enum rate: [:クレジットカード, :銀行振込]
+  enum payment_method: { クレジットカード: 0, 銀行振込: 1 }
 
 end
