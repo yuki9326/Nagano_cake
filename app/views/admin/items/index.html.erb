@@ -18,9 +18,16 @@
         <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
-          <td><%= item.name %></td>
-          <td><%= item.price %></td>
+          <td><%= link_to admin_item_path(item.id) do %>
+          <%= item.name %>
+          <% end %></td>
+          <td><%= item.price.floor.to_s(:delimited) %></td>
           <td><%= item.genre.name %></td>
+          <td><% if item.is_active = true then %>
+          販売中
+          <% else %>
+          販売停止中
+          <% end %></td>
         </tr>
         <% end %>
       </tbody>
