@@ -25,7 +25,7 @@ scope module: :public do
     delete 'cart_items/clear' => 'cart_items#clear'
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders, only: [:new, :create, :index, :show]
-    get 'orders/confirm' => 'orders#confirm'
+    post 'orders/confirm' => 'orders#confirm'
     get 'orders/thanks' => 'orders#thanks'
     patch 'customers/unsubscribe' => 'customers#unsubscribe'
     get 'customers/confirm' => 'customers#confirm'
