@@ -13,6 +13,10 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @order.payment_method = params[:order][:payment_method]
     @order.shipping_cost = 800
+    @total = 0
+    @cart_items.each do |cart_item|
+    @total += cart_item.item.price * 1.1 * cart_item.amount
+    end
 
     if params[:order][:address_kind] == "0" # ご自身の住所
       @order.postal_code = current_customer.postal_code
@@ -25,6 +29,7 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.name = params[:order][:name]
     end
+
   end
 
   def create

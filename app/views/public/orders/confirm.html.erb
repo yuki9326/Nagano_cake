@@ -20,10 +20,10 @@
         <tbody>
           <% @cart_items.each do |cart_item| %>
           <tr>
-            <td><%= attachment_image_tag cart_item, :image, size: "100x100" %><%= cart_item.items.name %></td>
-            <td><%= (cart_item.items.price * 1.1).floor.to_s(:delimited) %></td>
+            <td><%= attachment_image_tag cart_item.item, :image, size: "100x70" %><%= cart_item.item.name %></td>
+            <td><%= (cart_item.item.price * 1.1).floor.to_s(:delimited) %></td>
             <td><%= cart_item.amount %></td>
-            <td><%= cart_item.order_details.price * cart_item.amount %></td>
+            <td><%= ((cart_item.item.price * 1.1) * cart_item.amount).floor.to_s(:delimited) %></td>
           </tr>
           <% end %>
         </tbody>
@@ -39,12 +39,12 @@
 
         <tr>
           <th>商品合計</th>
-          <td></td>
+          <td><%= @total.floor.to_s(:delimited) %></td>
         </tr>
 
         <tr>
           <th>請求金額</th>
-          <td><%= @order.total_payment %></td>
+          <td><%= (@total + @order.shipping_cost).floor.to_s(:delimited) %></td>
         </tr>
       </table>
     </div>
