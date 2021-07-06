@@ -54,18 +54,16 @@
     <table class="table table-borderless">
       <tr>
         <th><strong>支払方法</strong></th>
-        <th><strong>お届け先</strong></th>
+        <td><%= @order.payment_method %></td>
       </tr>
-
-      <tbody>
-        <tr>
-          <td><%= @order.payment_method %></td>
-          <td><%= @order.address %><%= @order.name %></td>
-        </tr>
-      </tbody>
+      <tr>
+        <th><strong>お届け先</strong></th>
+        <td><%= @order.address %><%= @order.name %></td>
+      </tr>
     </table>
   </div>
 
   <div class="mx-auto">
+    <
   </div>
 </div>
