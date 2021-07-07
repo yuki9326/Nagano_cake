@@ -6,46 +6,50 @@
   </div>
 
   <div class="row">
+    <div class="col">
     <strong>注文情報</strong>
     <table class="table table-bordered">
       <tr>
-        <th>注文日</th>
-        <td><%= @order.created_at %></td>
+        <th class="table-secondary">注文日</th>
+        <td><%= l @order.created_at %></td>
       </tr>
 
       <tr>
-        <th>配送先</th>
+        <th class="table-secondary">配送先</th>
         <td><%= @order.full_address %></td>
       </tr>
 
       <tr>
-        <th>支払方法</th>
-        <td></td>
+        <th class="table-secondary">支払方法</th>
+        <td><%= @order.payment_method %></td>
       </tr>
 
       <tr>
-        <th>ステータス</th>
-        <td></td>
+        <th class="table-secondary">ステータス</th>
+        <td><%= @order.status %></td>
       </tr>
     </table>
+    </div>
 
+    <div class="col">
     <strong>請求情報</strong>
     　<table class="table table-bordered">
     　 <tr>
-    　   <th>商品合計</th>
-    　   <td><%= @total.floor.to_s(:delimited) %></td>
+    　   <th class="table-secondary">商品合計</th>
+    　   <td><%= @order.total_payment.floor.to_s(:delimited) %></td>
     　 </tr>
 
     　 <tr>
-    　   <th>配送料</th>
+    　   <th class="table-secondary">配送料</th>
     　   <td><%= @order.shipping_cost %></td>
     　 </tr>
 
     　 <tr>
-    　   <th>ご請求額</th>
-    　   <td><%= (@total + @order.shipping_cost).floor.to_s(:delimited) %></td>
+    　   <th class="table-secondary">ご請求額</th>
+    　   <td><%= (@order.total_payment.to_i + @order.shipping_cost).floor.to_s(:delimited) %></td>
     　 </tr>
     　</table>
+    </div>
   </div>
 
   <div class="row">
@@ -61,13 +65,14 @@
       </thead>
 
       <tbody>
-        <% @order_details.each do |order_detail| %>
+        <% @order.order_details.each do |order_detail| %>
         <tr>
           <td><%= order_detail.item.name %></td>
           <td><%= order_detail.price %></td>
           <td><%= order_detail.amount %></td>
           <td><%= (order_detail.price * order_detail.amount).floor.to_s(:delimited) %></td>
         </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
