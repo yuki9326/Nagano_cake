@@ -11,4 +11,8 @@ class Order < ApplicationRecord
   ["〒",postal_code, address, name].join('　')
  end
 
+  def full_name
+    self.last_name + self.first_name
+  end
+
 end

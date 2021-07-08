@@ -7,15 +7,16 @@
   <br>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group row">
+  <div class="form-group row justify-content-center">
     <label for="inputEmail" class="col-sm-2 col-form-label">メールアドレス</label>
-    <%= f.text_field :email, :placeholder => "sample@example.com", autofocus:true, autocomplete: "email" %>
+    <%= f.text_field :email, :placeholder => "sample@example.com", autofocus:true, autocomplete: "email", size: 60 %>
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row justify-content-center">
     <label for="inputPassword" class="col-sm-2 col-form-label">パスワード</label>
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password", size: 60%>
   </div>
+  <br>
 
   <div class="form-group row">
     <%= f.submit 'ログイン', class:"btn btn-primary mx-auto" %>

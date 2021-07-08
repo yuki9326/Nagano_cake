@@ -15,8 +15,21 @@
       </tr>
     </thead>
 
+      <% @orders.each do |order| %>
     <tbody>
-      <% @homes.
+      <tr>
+        <td><%= l order.created_at, format: :long %></td>
+        <td><%= order.customer.full_name %></td>
+        <td>
+          <% total = 0 %>
+        <% order.order_details.each do |order_detail|
+             total += order_detail.amount
+           end %>
+        <%= total %>
+        </td>
+        <td><%= order.status %></td>
+      </tr>
     </tbody>
+    <% end %>
   </table>
 </div>
