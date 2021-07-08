@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def edit
@@ -17,9 +17,13 @@ class Public::CustomersController < ApplicationController
   end
 
   def confirm
+    @customer = current_customer
   end
 
   def unsubscribe
+    @customer = current_customer
+    @customer.update(is_active: false)
+    redirect_to logout_path
   end
 
   private

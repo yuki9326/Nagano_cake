@@ -11,6 +11,9 @@ devise_for :customers, controllers: {
   registrations: 'public/registrations'
 }
 
+devise_scope :customer do
+ get '/logout', to: 'devise/sessions#destroy', as: :logout
+end
  namespace :admin do
  get '/' => 'homes#top'
  resources :items, except: [:destroy]
