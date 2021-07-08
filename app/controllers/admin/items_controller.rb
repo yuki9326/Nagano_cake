@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
 
   def index
-    @items = Item.page(params[:page]).reverse_order
+    @items = Item.first(10)
   end
 
   def new
