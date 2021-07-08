@@ -25,15 +25,13 @@
             <% end %>
         </td>
         <td><%= customer.email %></td>
-        <td><% if customer.is_deleted = true then %>
-            有効
+        <td><% if customer.is_active = true then %>
+            <p class="text-success">有効</p>
             <% else %>
-            退会
+            <p class="text-secondary">退会</p>
             <% end %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
-
-  <%= paginate @customers %>
 </div>
